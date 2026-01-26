@@ -1,0 +1,36 @@
+class Solution {
+    static Map<String, Integer> table = new HashMap<>();
+    static {
+        table.put("I", 1);
+        table.put("V", 5);
+        table.put("X", 10);
+        table.put("L", 50);
+        table.put("C", 100);
+        table.put("D", 500);
+        table.put("M", 1000);
+        table.put("IV", 4);
+        table.put("IX", 9);
+        table.put("XL", 40);
+        table.put("XC", 90);
+        table.put("CD", 400);
+        table.put("CM", 900);
+    }
+    public int romanToInt(String s) {
+        int sum = 0;
+        int index = 0;
+        while (index < s.length()) {
+            if (index < s.length() - 1) {
+                String temp = s.substring(index, index + 2);
+                if (table.containsKey(temp)) {
+                    sum += table.get(temp);
+                    index += 2;
+                    continue;
+                }
+            }
+            String temp = s.substring(index, index + 1);
+            sum += table.get(temp);
+            index++;
+        }
+        return sum;
+    }
+}

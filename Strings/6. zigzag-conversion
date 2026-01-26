@@ -1,0 +1,27 @@
+class Solution {
+    public String convert(String s, int numRows) {
+        if (numRows == 1) {
+            return s;
+        }
+        String row[] = new String[numRows];
+        for (int i = 0; i < row.length; i++) {
+            row[i] = "";
+        }
+        int direction = 1;
+        int current = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (current >= numRows - 1) {
+                direction = -1;
+            } else if (current <= 0) {
+                direction = 1;
+            }
+            row[current] += s.charAt(i);
+            current += direction;
+        }
+        String ans = new String();
+        for (int i = 0; i < row.length; i++) {
+            ans += row[i];
+        }
+        return ans;
+    }
+}
