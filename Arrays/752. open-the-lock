@@ -1,0 +1,36 @@
+class Solution {
+    public int openLock(String[] deadends, String target) {
+        Set<String> dead = new HashSet<>(Arrays.asList(deadends));
+        if (dead.contains("0000")) return -1;
+        if ("0000".equals(target)) return 0;
+
+        Queue<String> q = new ArrayDeque<>();
+        Set<String> set = new HashSet<>();
+        q.offer("0000");
+        set.add("0000");
+        int step = 0;
+
+        while (!q.isEmpty()) {
+            int size = q.size();
+            for(int i = 0; i < size; i++) {
+                String temp = q.poll();
+                if (dead.contains(temp)) continue;
+                if (temp.equals(target)) return step;
+                char[] cs = temp.toCharArray();
+                for (int j = 0; j < 4; j++) {
+                    char c = cs[j];
+                    int d = c - '0';
+                    cs[j] = (char) ('0' + ((d + 1) % 10));
+                    String up = new String(cs);
+                    if (!dead.contains(up) && set.add(up)) q.offer(up);
+                    cs[j] = (char) ('0' + ((d + 9) % 10));
+                    String down = new String(cs);
+                    if (!dead.contains(down) && set.add(down)) q.offer(down);
+                    cs[j] = c;
+                } 
+            }
+            step++;
+        }
+        return -1;
+    }
+}

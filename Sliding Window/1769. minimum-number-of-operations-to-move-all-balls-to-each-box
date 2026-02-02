@@ -1,0 +1,19 @@
+class Solution {
+    public int[] minOperations(String boxes) {
+        int[] answer = new int[boxes.length()];
+        int dis = 0;
+        int fin = 0;
+        for(int i = 0; i < boxes.length(); i++){
+            for(int j = 0; j < boxes.length(); j++){
+                if(i != j && boxes.substring(j, j+1).equals(new String("1"))){
+                    fin += Math.abs(dis-i);
+                }
+                dis++;
+            }
+            answer[i] = fin;
+            dis = 0;
+            fin = 0;
+        }
+        return answer;
+    }
+}
