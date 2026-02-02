@@ -1,0 +1,40 @@
+class MedianFinder {
+    private PriorityQueue<Integer> min;
+    private PriorityQueue<Integer> max;
+
+
+    public MedianFinder() {
+        min = new PriorityQueue<>();
+        max = new PriorityQueue<>((a,b) -> b - a);
+    }
+    
+    public void addNum(int num) {
+        if (max.size() == 0) max.offer(num);
+        else if (max.size() == min.size()) {
+            if (num > min.peek()) {
+                max.offer(min.poll());
+                min.offer(num);
+            } else {
+                max.offer(num);
+            }
+        } else {
+            if (num < max.peek()) {
+                min.offer(max.poll());
+                max.offer(num);
+            } else {
+                min.offer(num);
+            }
+        }
+    }
+    
+    public double findMedian() {
+        return max.size() == min.size() ? (max.peek() + min.peek()) / 2.0 : max.peek();
+    }
+}
+
+/**
+ * Your MedianFinder object will be instantiated and called as such:
+ * MedianFinder obj = new MedianFinder();
+ * obj.addNum(num);
+ * double param_2 = obj.findMedian();
+ */
