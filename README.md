@@ -25,8 +25,12 @@ This repository is dedicated to rebuilding my problem-solving skills and compute
 - [x] **Sliding Window:** Subarray/Substring optimization.
 - [x] **Trees:** DFS/BFS traversals, Binary Search Trees (BST).
 
-### 4. Upcoming Topics (In Progress)
-- [ ] Graphs (Dijkstra, BFS, DFS)
+### 4. Graphs (In Progress)
+- [ ] **Foundations:** Adjacency List/Matrix and Graph representations.
+- [ ] **Traversals:** BFS & DFS (Cycle detection, Connected Components).
+- [ ] **Shortest Path:** Dijkstra, Bellman-Ford, and Topological Sort.
+
+### 5. Upcoming Topics (In Progress)
 - [ ] Dynamic Programming (DP)
 - [ ] Recursion & Backtracking
 
